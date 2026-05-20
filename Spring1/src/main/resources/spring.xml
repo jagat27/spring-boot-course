@@ -1,0 +1,19 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="alien1" class="com.telusko.Alien" primary="true">
+		<property name="comp" ref="lap1"/>
+	</bean>
+
+	<bean id="alien2" class="com.telusko.Alien">
+		<property name="comp" ref="lap1"/>
+	</bean>
+
+	<bean id="lap1" class="com.telusko.Laptop"/>
+
+	<bean id="lap2" class="com.telusko.Desktop"/>
+
+</beans>
