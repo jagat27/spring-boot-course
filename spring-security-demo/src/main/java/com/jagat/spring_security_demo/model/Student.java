@@ -1,4 +1,4 @@
-package com.jagat.spring_security_demo;
+package com.jagat.spring_security_demo.model;
 
 
 import lombok.AllArgsConstructor;
