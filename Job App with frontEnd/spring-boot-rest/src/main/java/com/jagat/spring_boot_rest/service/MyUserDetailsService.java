@@ -1,8 +1,8 @@
-package com.jagat.spring_security_demo.service;
+package com.jagat.spring_boot_rest.service;
 
-import com.jagat.spring_security_demo.model.User;
-import com.jagat.spring_security_demo.model.UserPrincipal;
-import com.jagat.spring_security_demo.repo.UserRepo;
+import com.jagat.spring_boot_rest.model.User;
+import com.jagat.spring_boot_rest.model.UserPrincipal;
+import com.jagat.spring_boot_rest.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -12,11 +12,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class MyUserDetailsService implements UserDetailsService {
-    //UserDetailService has to Load user information from a data source using a username.
 
     @Autowired
     private UserRepo repo;
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 

@@ -34,6 +34,10 @@ public class SecurityConfig {
         // Setter method of DaoAuthenticationProvider is deprecated
         // Constructor is used
         DaoAuthenticationProvider provider=new DaoAuthenticationProvider(userDetailsService);
+        //DaoAuthenticationProvider is the Spring Security component that performs username/password
+        // authentication using data loaded from a UserDetailsService
+
+
         //PasswordEncoder passwordEncoder = passwordEncoder();
         provider.setPasswordEncoder(new BCryptPasswordEncoder(12));
         // NoPasswordEncoder is Deprecated. In this place we used DelegatingPasswordEncoder
@@ -47,10 +51,6 @@ public class SecurityConfig {
 
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
-
-
-
-
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
