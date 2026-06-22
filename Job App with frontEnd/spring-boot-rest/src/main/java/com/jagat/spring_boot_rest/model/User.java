@@ -1,4 +1,4 @@
-package com.jagat.spring_security_demo.model;
+package com.jagat.spring_boot_rest.model;
 
 
 import jakarta.persistence.Entity;
