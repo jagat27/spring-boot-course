@@ -13,6 +13,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -33,8 +34,8 @@ public class SecurityConfig {
         // Setter method of DaoAuthenticationProvider is deprecated
         // Constructor is used
         DaoAuthenticationProvider provider=new DaoAuthenticationProvider(userDetailsService);
-        PasswordEncoder passwordEncoder = passwordEncoder();
-        provider.setPasswordEncoder(passwordEncoder);
+        //PasswordEncoder passwordEncoder = passwordEncoder();
+        provider.setPasswordEncoder(new BCryptPasswordEncoder(12));
         // NoPasswordEncoder is Deprecated. In this place we used DelegatingPasswordEncoder
         // Default BCrypt PasswordEncode, But we used {noop} to tell spring that the password is not encrypted.
         return provider;

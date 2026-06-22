@@ -34,7 +34,7 @@ public class UserPrincipal implements UserDetails {
     @Override
     public String getPassword() {
 
-        return "{noop}"+user.getPassword(); // {noop} is used to tell spring that the password is not encrypted
+        return user.getPassword(); // {noop} is used to tell spring that the password is not encrypted
     }
 
     @Override
