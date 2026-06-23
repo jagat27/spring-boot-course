@@ -12,11 +12,11 @@ public class HelloController {
 
     @GetMapping()
     public String greet(HttpSession session){
-        return "Hello... "+session.getId();
+        return "Hello... ";
     }
 
     @GetMapping("helloController")
     public String helloGreet(HttpServletRequest request){
-        return "Inside helloGreet "+ request.getSession().getId();
+        return "Inside helloGreet ";
     }
 }
