@@ -1,0 +1,36 @@
+version: "3.7"
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    networks:
+      - new-network
+    depends_on:
+      postgres:
+        condition: service_healthy  # Forces the app to wait for the healthcheck
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: jagat
+      POSTGRES_PASSWORD: 1111
+      POSTGRES_DB: mydb
+    ports:
+      - 5432:5432
+    networks:
+      - new-network
+    volumes:
+      - postgres-s-data:/var/lib/postgresql  # Removed the '/data' suffix
+    healthcheck:                 # Verifies the DB is actually accepting connections
+      test: ["CMD-SHELL", "pg_isready -U jagat -d mydb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+networks:
+  new-network:
+    driver: bridge
+volumes:
+  postgres-s-data:
