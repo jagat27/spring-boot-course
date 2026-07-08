@@ -8,6 +8,7 @@ import com.jagat.question_service.model.Responses;
 import com.jagat.question_service.service.QuestionService;
 import org.apache.coyote.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +20,9 @@ public class QuestionController {
 
     @Autowired
     QuestionService questionService;
+
+    @Autowired
+    Environment environment;
 
     @GetMapping("allQuestions")
     public ResponseEntity<List<Question>> getAllQuestions(){
@@ -42,6 +46,7 @@ public class QuestionController {
 
     @PostMapping("getQuestions")
     public ResponseEntity<List<QuestionWrapper>> getQuestionsById(@RequestBody List<Integer> questionIds){
+        System.out.println(environment.getProperty("local.server.port"));
         return questionService.getQuestionById(questionIds);
     }
 
